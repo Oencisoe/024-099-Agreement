@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FMS Contact List &amp; Employer Burden – Self-Determination Program</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #1a1a1a; background: #eef1f4; line-height: 1.45; }
+  a { color: #145a8d; }
+
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 18px 16px 48px; }
+
+  header.top { background: #0b3d62; color: #fff; border-radius: 8px; padding: 20px 24px; margin-bottom: 16px; }
+  header.top h1 { font-size: 22px; line-height: 1.25; margin-bottom: 6px; }
+  header.top p { font-size: 13px; color: #cfe1ef; max-width: 760px; }
+  header.top .meta { font-size: 12px; color: #9fc2dc; margin-top: 8px; }
+
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 16px; }
+  .toolbar input[type=search] { flex: 1 1 280px; padding: 10px 12px; font-size: 14px; border: 1px solid #b9c4cf; border-radius: 6px; }
+  .toolbar select { padding: 10px 12px; font-size: 14px; border: 1px solid #b9c4cf; border-radius: 6px; background:#fff; }
+  .count { font-size: 12px; color: #5a6b78; }
+
+  .calc { background:#fff; border:1px solid #d4dde5; border-left:4px solid #0b3d62; border-radius:8px; padding:16px 18px; margin-bottom:20px; }
+  .calc h2 { font-size:16px; margin-bottom:10px; color:#0b3d62; }
+  .calc .row { display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end; }
+  .calc label { display:flex; flex-direction:column; font-size:12px; color:#42505c; gap:4px; }
+  .calc select, .calc input { padding:8px 10px; font-size:14px; border:1px solid #b9c4cf; border-radius:6px; min-width:160px; }
+  .calc .result { margin-top:12px; font-size:13px; }
+  .calc .result table { border-collapse:collapse; margin-top:6px; }
+  .calc .result td { padding:3px 12px 3px 0; }
+  .calc .big { font-size:20px; font-weight:bold; color:#0b3d62; }
+  .calc .hint { font-size:11px; color:#6b7884; margin-top:8px; }
+
+  .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap:14px; }
+
+  .card { background:#fff; border:1px solid #d4dde5; border-radius:8px; padding:14px 16px; display:flex; flex-direction:column; }
+  .card h3 { font-size:16px; color:#0b3d62; }
+  .card .sub { font-size:11px; color:#6b7884; font-style:italic; margin-top:1px; }
+  .badges { display:flex; flex-wrap:wrap; gap:5px; margin:8px 0; }
+  .badge { font-size:10.5px; font-weight:bold; padding:2px 8px; border-radius:10px; background:#e3edf5; color:#0b3d62; }
+  .badge.sole { background:#e7f2e7; color:#256029; }
+  .badge.co { background:#fdf0e0; color:#8a5118; }
+  .field { margin-top:6px; font-size:12.5px; }
+  .field .lbl { font-weight:bold; color:#42505c; font-size:11px; text-transform:uppercase; letter-spacing:.3px; }
+  .field .val { color:#1a1a1a; }
+  .field .val div { margin-top:1px; }
+
+  details.burden { margin-top:10px; border-top:1px dashed #cdd8e1; padding-top:8px; }
+  details.burden summary { cursor:pointer; font-size:12px; font-weight:bold; color:#0b3d62; }
+  table.brt { width:100%; border-collapse:collapse; margin-top:8px; font-size:11px; }
+  table.brt th, table.brt td { border:1px solid #dde4ea; padding:3px 5px; text-align:center; }
+  table.brt th { background:#f1f5f8; color:#42505c; font-size:10px; }
+  table.brt td.m { text-align:left; font-weight:bold; white-space:nowrap; }
+  table.brt td.tot { font-weight:bold; background:#f6f9fb; }
+  .nodata { font-size:11px; color:#8a96a1; margin-top:8px; font-style:italic; }
+
+  .section-h { font-size:18px; color:#0b3d62; margin:26px 0 10px; border-bottom:2px solid #0b3d62; padding-bottom:4px; }
+
+  footer.src { margin-top:30px; font-size:11.5px; color:#6b7884; border-top:1px solid #d4dde5; padding-top:12px; }
+  footer.src a { color:#145a8d; }
+
+  .print-btn { background:#0b3d62; color:#fff; border:none; padding:9px 16px; border-radius:6px; font-size:13px; cursor:pointer; }
+  .print-btn:hover { background:#0f4f7e; }
+
+  @media print {
+    body { background:#fff; font-size:10px; }
+    .wrap { max-width:none; padding:0; }
+    .toolbar, .print-btn, .calc { display:none; }
+    header.top { background:#fff; color:#000; border:none; border-bottom:2px solid #000; border-radius:0; padding:0 0 8px; }
+    header.top p, header.top .meta { color:#333; }
+    .grid { grid-template-columns: repeat(2, 1fr); gap:8px; }
+    .card { break-inside:avoid; border:1px solid #999; }
+    details.burden[open] summary { display:none; }
+    details.burden { display:block; }
+    a { color:#000; text-decoration:none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>Financial Management Service (FMS) Contact List &amp; Approved Employer Burden</h1>
+    <p>Self-Determination Program (SDP) directory of approved FMS providers, the services and languages they offer, how to reach them, and their approved employer-burden rates. Contact your Regional Center to confirm which FMS providers are available to you.</p>
+    <div class="meta" id="metaLine"></div>
+  </header>
+
+  <div class="toolbar">
+    <input type="search" id="q" placeholder="Search by provider name, language, email, phone…" aria-label="Search providers">
+    <select id="svc" aria-label="Filter by service">
+      <option value="">All services</option>
+      <option value="Bill Payer">Bill Payer</option>
+      <option value="Co-Employer">Co-Employer</option>
+      <option value="Sole Employer">Sole Employer</option>
+    </select>
+    <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="calc">
+    <h2>Employer Burden Estimator</h2>
+    <div class="row">
+      <label>FMS Provider
+        <select id="cProv"></select>
+      </label>
+      <label>Employer Model
+        <select id="cModel"></select>
+      </label>
+      <label>Annual gross wages ($)
+        <input type="number" id="cWage" value="20000" min="0" step="500">
+      </label>
+    </div>
+    <div class="result" id="cResult"></div>
+    <div class="hint">Estimate only. Employer burden is applied on top of employee wages. Rates marked “TBD” are not yet finalized by the provider. Always confirm current figures with the FMS provider and your Regional Center.</div>
+  </div>
+
+  <h2 class="section-h">Provider Directory</h2>
+  <div class="grid" id="grid"></div>
+
+  <h2 class="section-h">Additional providers with approved employer burden</h2>
+  <p style="font-size:12.5px;color:#5a6b78;margin-bottom:10px;">These providers appear on the approved employer-burden summary but are not listed individually on the contact page. Contact your Regional Center for their current details.</p>
+  <div class="grid" id="gridExtra"></div>
+
+  <footer class="src">
+    <strong>Sources:</strong> California Department of Developmental Services —
+    <a href="https://www.dds.ca.gov/initiatives/sdp/financial-management-service-contact-list/" target="_blank" rel="noopener">FMS Contact List</a>
+    and <a href="https://www.dds.ca.gov/wp-content/uploads/2026/04/Summary_of_Approved_FMS_Employer_Burden_20260104.xlsx" target="_blank" rel="noopener">Summary of Approved FMS Employer Burden</a>.
+    This page is an unofficial, consolidated reference; the DDS website is authoritative. Contact details may change.
+  </footer>
+</div>
+
+<script>
+const DATA = {
+ "burden_updated": "Last Updated April 1, 2026",
+ "contacts": [
+  {
+   "name": "AAA FMS",
+   "services": [
+    "Bill Payer",
+    "Co-Employer",
+    "Sole Employer"
+   ],
+   "languages": "English, Korean, Mandarin, Spanish",
+   "phones": [
+    "(213) 868-2992"
+   ],
+   "emails": [
+    "info@aaa-fms.com"
+   ],
+   "website": null,
+   "burden_key": "AAA",
+   "burden": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.057,
+     "psl": 0.0333,
+     "total": 0.2138,
+     "updated": "2025-01-28"
+    },
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": "TBD",
+     "psl": 0.0333,
+     "total": 0.1568,
+     "updated": "2025-01-28"
+    }
+   ]
+  },
+  {
+   "name": "Accura FMS",
+   "services": [
+    "Bill Payer",
+    "Co-Employer",
+    "Sole Employer"
+   ],
+   "languages": "English, Spanish, Hindi, Tamil",
+   "phones": [
+    "855-416-7890"
+   ],
+   "emails": [
+    "info@accurafms.com"
+   ],
+   "website": "https://www.accurafms.com",
+   "burden_key": "Accura",
+   "burden": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.064,
+     "psl": 0.0375,
+     "total": 0.225,
+     "updated": "2025-12-08"
+    },
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": "TBD",
+     "psl": 0.0375,
+     "total": 0.161,
+     "updated": "2025-12-08"
+    }
+   ]
+  },
+  {
+   "name": "ACE FMS",
+   "services": [
+    "Bill Payer",
+    "Co-Employer",
+    "Sole Employer"
+   ],
+   "languages": "English, Farsi",
+   "phones": [
+    "Peyman Dadmehr: 833-4-ACEFMS (Ext 1)",
+    "833-422-3367 (Ext 1)"
+   ],
+   "emails": [
+    "Info@acefms.com"
+   ],
+   "website": null,
+   "burden_key": "Ace FMS",
+   "burden": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.0918,
+     "psl": 0.0333,
+     "total": 0.2486,
+     "updated": "2024-08-01"
+    },
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": "TBD",
+     "psl": 0.0333,
+     "total": 0.1568,
+     "updated": "2024-08-01"
+    }
+   ]
+  },
+  {
+   "name": "Action FMS",
+   "services": [
+    "Bill Payer",
+    "Co-Employer",
+    "Sole Employer"
+   ],
+   "languages": "English",
+   "phones": [
+    "Anne Gogstad: 310-867-8882"
+   ],
+   "emails": [
+    "contact@ActionFMS.com"
+   ],
+   "website": null,
+   "burden_key": null,
+   "burden": []
+  },
+  {
+   "name": "Acumen FMS",
+   "services": [
+    "Bill Payer",
+    "Sole Employer"
+   ],
+   "languages": "English, Spanish",
+   "phones": [
+    "Yvette Torres: 424-210-8810"
+   ],
+   "emails": [
+    "yvettet@acumen2.net"
+   ],
+   "website": null,
+   "burden_key": "Acumen",
+   "burden": [
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.021,
+     "suta": 0.037,
+     "ett": 0.001,
+     "wc": 0.0499,
+     "psl": 0.0394,
+     "total": 0.2248,
+     "updated": "2026-01-21"
+    }
+   ]
+  },
+  {
+   "name": "AID FMS LLC",
+   "services": [
+    "Bill Payer",
+    "Co-Employer",
+    "Sole Employer"
+   ],
+   "languages": "English, Spanish, Farsi (Persian), Filipino",
+   "phones": [
+    "Pooya Mahmoudian: (213) 703-5760",
+    "Isaac Mahgerefted: (310) 780-9907"
+   ],
+   "emails": [
+    "hello@aidfms.com"
+   ],
+   "website": "https://www.aidfms.com",
+   "burden_key": "AID FMS LLC",
+   "burden": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.0638,
+     "psl": 0.0333,
+     "total": 0.2206,
+     "updated": "2025-09-02"
+    },
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": "TBD",
+     "psl": 0.0333,
+     "total": 0.1568,
+     "updated": "2025-09-02"
+    }
+   ]
+  },
+  {
+   "name": "Arch FMS, Inc.",
+   "services": [
+    "Bill Payer",
+    "Co-Employer",
+    "Sole Employer"
+   ],
+   "languages": "English",
+   "phones": [
+    "619-330-7097"
+   ],
+   "emails": [
+    "support@archfms.com"
+   ],
+   "website": "http://www.archfms.com",
+   "burden_key": "Arch FMS, Inc.",
+   "burden": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.0559,
+     "psl": 0.0192,
+     "total": 0.1986,
+     "updated": "2024-08-01"
+    },
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": "TBD",
+     "psl": 0.0192,
+     "total": 0.1427,
+     "updated": "2024-08-01"
+    }
+   ]
+  },
+  {
+   "name": "Aveanna Support Services",
+   "subtitle": "Formerly Premier Healthcare Services",
+   "services": [
+    "Bill Payer",
+    "Co-Employer"
+   ],
+   "languages": "English, Spanish, Vietnamese, Cantonese, Mandarin, Trieu Chau",
+   "phones": [
+    "Northern California: 866-979-1182",
+    "Southern California: 310-215-1730"
+   ],
+   "emails": [
+    "Northern California: SJSDP@aveanna.com",
+    "Southern California: FMSInfo@aveanna.com"
+   ],
+   "website": null,
+   "burden_key": "Aveanna Healthcare Services",
+   "burden": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.006,
+     "suta": 0.031,
+     "ett": 0.001,
+     "wc": 0.0248,
+     "psl": 0.033,
+     "total": 0.1723,
+     "updated": "2026-03-19"
+    }
+   ]
+  },
+  {
+   "name": "Balance FMS",
+   "services": [
+    "Bill Payer",
+    "Co-Employer",
+    "Sole Employer"
+   ],
+   "languages": "English, Spanish",
+   "phones": [
+    "Teri Ercoli: 424-228-9854",
+    "Main Line: 888-368-3710"
+   ],
+   "emails": [
+    "info@balancefms.com"
+   ],
+   "website": null,
+   "burden_key": "Balance",
+   "burden": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.006,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.059,
+     "psl": 0.03,
+     "total": 0.2065,
+     "updated": "2025-03-26"
+    },
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.006,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": "TBD",
+     "psl": 0.03,
+     "total": 0.1475,
+     "updated": "2025-03-26"
+    }
+   ]
+  },
+  {
+   "name": "Cambrian FMS",
+   "services": [
+    "Bill Payer",
+    "Co-Employer",
+    "Sole Employer"
+   ],
+   "languages": "English, Spanish, Vietnamese, Tagalog, Farsi",
+   "phones": [
+    "562-989-7777 (ask for Christina Cisneros or David Ellis)"
+   ],
+   "emails": [
+    "intake@cfms1.com"
+   ],
+   "website": null,
+   "burden_key": "Cambrian",
+   "burden": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.085,
+     "psl": 0.033,
+     "total": 0.2415,
+     "updated": "2025-11-25"
+    },
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.085,
+     "psl": 0.033,
+     "total": 0.2415,
+     "updated": "2025-11-25"
+    }
+   ]
+  },
+  {
+   "name": "Community Interface Services (CIS)",
+   "services": [
+    "Bill Payer"
+   ],
+   "languages": "English, Spanish, Vietnamese, Hindi",
+   "phones": [
+    "760-729-3866"
+   ],
+   "emails": [
+    "Christine Sheppard: CSheppard@communityinterfaceservices.org"
+   ],
+   "website": null,
+   "burden_key": null,
+   "burden": []
+  },
+  {
+   "name": "Dromen FMS",
+   "services": [
+    "Bill Payer",
+    "Co-Employer",
+    "Sole Employer"
+   ],
+   "languages": "English, Spanish",
+   "phones": [
+    "John Feringa: 909-821-7598"
+   ],
+   "emails": [
+    "john@dromeninc.com"
+   ],
+   "website": null,
+   "burden_key": "Dromen, Inc",
+   "burden": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.015,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.0432,
+     "psl": 0.0333,
+     "total": 0.203,
+     "updated": "2025-03-01"
+    },
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.015,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": "TBD",
+     "psl": 0.0333,
+     "total": 0.1598,
+     "updated": "2025-03-01"
+    }
+   ]
+  },
+  {
+   "name": "GT Independence",
+   "services": [
+    "Bill Payer",
+    "Co-Employer",
+    "Sole Employer"
+   ],
+   "languages": "All languages supported to assist individuals in the language of their choice",
+   "phones": [
+    "877-659-4500"
+   ],
+   "emails": [
+    "Emmett Jones: EMjones@gtindependence.com",
+    "Rob Lewis: RLewis@gtindependence.com",
+    "Coushatta Seymore: cseymore@gtindependence.com"
+   ],
+   "website": null,
+   "burden_key": "GT Independence",
+   "burden": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.018,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.0274,
+     "psl": 0.0376,
+     "total": 0.1945,
+     "updated": "2025-10-24"
+    },
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.018,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": "TBD",
+     "psl": 0.0376,
+     "total": 0.1671,
+     "updated": "2025-10-24"
+    }
+   ]
+  },
+  {
+   "name": "Mains'l",
+   "services": [
+    "Bill Payer",
+    "Sole Employer"
+   ],
+   "languages": "English, Spanish",
+   "phones": [
+    "866-767-4296"
+   ],
+   "emails": [
+    "cafms@mainsl.com"
+   ],
+   "website": null,
+   "burden_key": "Mains'l",
+   "burden": [
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.021,
+     "suta": 0.036,
+     "ett": 0.001,
+     "wc": 0.0264,
+     "psl": 0.0194,
+     "total": 0.1803,
+     "updated": "2026-03-27"
+    }
+   ]
+  },
+  {
+   "name": "Public Partnerships LLC (PPL)",
+   "services": [
+    "Bill Payer",
+    "Sole Employer"
+   ],
+   "languages": "All languages supported to assist individuals in the language of their choice",
+   "phones": [
+    "844-902-6665"
+   ],
+   "emails": [
+    "pplcalifornia@pplfirst.com"
+   ],
+   "website": null,
+   "burden_key": "Public Partnerships LLC (PPL)",
+   "burden": [
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.018,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.0159,
+     "psl": 0.0333,
+     "total": 0.1787,
+     "updated": "2026-03-27"
+    }
+   ]
+  },
+  {
+   "name": "Ritz FMS Inc.",
+   "services": [
+    "Bill Payer",
+    "Co-Employer",
+    "Sole Employer"
+   ],
+   "languages": "English, Spanish, Mandarin",
+   "phones": [
+    "833-748-9888"
+   ],
+   "emails": [
+    "info@ritzfms.com"
+   ],
+   "website": null,
+   "burden_key": "Ritz FMS",
+   "burden": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.0377,
+     "psl": 0.0333,
+     "total": 0.1945,
+     "updated": "2025-10-24"
+    },
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": "TBD",
+     "psl": 0.0333,
+     "total": 0.1568,
+     "updated": "2025-04-02"
+    }
+   ]
+  },
+  {
+   "name": "Sentinel Four",
+   "services": [
+    "Bill Payer",
+    "Co-Employer",
+    "Sole Employer"
+   ],
+   "languages": "English",
+   "phones": [
+    "530-515-2948"
+   ],
+   "emails": [
+    "info@sentinelfour.com"
+   ],
+   "website": null,
+   "burden_key": "Sentinel Four",
+   "burden": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.018,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.0605,
+     "psl": 0.0192,
+     "total": 0.2092,
+     "updated": "2025-02-28"
+    },
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.018,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": "TBD",
+     "psl": 0.0192,
+     "total": 0.1487,
+     "updated": "2025-02-28"
+    }
+   ]
+  },
+  {
+   "name": "SequoiaSD",
+   "services": [
+    "Bill Payer",
+    "Sole Employer"
+   ],
+   "languages": "English, Spanish",
+   "phones": [
+    "949-301-9950"
+   ],
+   "emails": [
+    "info@sequoiasd.com"
+   ],
+   "website": "https://sequoiasd.com",
+   "burden_key": "SequoiaSD FMS",
+   "burden": [
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.006,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.0639,
+     "psl": 0.025,
+     "total": 0.2064,
+     "updated": "2024-08-01"
+    }
+   ]
+  }
+ ],
+ "burden_only": [
+  {
+   "name": "Blessed FMS, Inc.",
+   "rows": [
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": "TBD",
+     "psl": 0.0333,
+     "total": 0.1568,
+     "updated": "2026-04-01"
+    }
+   ]
+  },
+  {
+   "name": "C&T Home Care LLC",
+   "rows": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.006,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.0456,
+     "psl": 0.0333,
+     "total": 0.1964,
+     "updated": "2026-03-27"
+    },
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.006,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.0456,
+     "psl": 0.0333,
+     "total": 0.1964,
+     "updated": "2026-03-27"
+    }
+   ]
+  },
+  {
+   "name": "Essential Pay",
+   "rows": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.023,
+     "ett": 0.0,
+     "wc": 0.03,
+     "psl": 0.05,
+     "total": 0.1915,
+     "updated": "2024-08-01"
+    }
+   ]
+  },
+  {
+   "name": "Fact Family",
+   "rows": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.006,
+     "suta": 0.044,
+     "ett": 0.0,
+     "wc": 0.0415,
+     "psl": 0.032,
+     "total": 0.2,
+     "updated": "2024-08-01"
+    },
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.006,
+     "suta": 0.044,
+     "ett": 0.0,
+     "wc": 0.0415,
+     "psl": 0.032,
+     "total": 0.2,
+     "updated": "2024-08-01"
+    }
+   ]
+  },
+  {
+   "name": "HR Alliance",
+   "rows": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.0647,
+     "psl": 0.0395,
+     "total": 0.2277,
+     "updated": "2025-02-13"
+    },
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.012,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.0647,
+     "psl": 0.0395,
+     "total": 0.2277,
+     "updated": "2025-02-13"
+    }
+   ]
+  },
+  {
+   "name": "Ridgeline",
+   "rows": [
+    {
+     "model": "Co-Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.006,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": 0.03,
+     "psl": 0.0325,
+     "total": 0.18,
+     "updated": "2025-02-19"
+    },
+    {
+     "model": "Sole Employer",
+     "fica_ss": 0.062,
+     "fica_med": 0.0145,
+     "futa": 0.006,
+     "suta": 0.034,
+     "ett": 0.001,
+     "wc": "TBD",
+     "psl": 0.0325,
+     "total": 0.15,
+     "updated": "2025-02-19"
+    }
+   ]
+  }
+ ]
+};
+const BURDEN_COLS = [
+  ["fica_ss","Soc. Sec."],["fica_med","Medicare"],["futa","FUTA"],["suta","SUTA"],
+  ["ett","ETT"],["wc","Workers' Comp"],["psl","Paid Sick"],["total","Total"]
+];
+const fmtPct = v => (v===null||v===undefined) ? "—" : (typeof v==="string" ? v : (v*100).toFixed(2).replace(/\.?0+$/,"")+"%");
+const esc = s => (s||"").replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function svcBadge(s){
+  const cls = s==="Sole Employer" ? "sole" : s==="Co-Employer" ? "co" : "";
+  return `<span class="badge ${cls}">${esc(s)}</span>`;
+}
+function emailLink(e){
+  const m = e.match(/([^\s:]+@[^\s:]+)/);
+  if(!m) return esc(e);
+  const addr = m[1];
+  return esc(e.replace(addr,"")) + `<a href="mailto:${esc(addr)}">${esc(addr)}</a>`;
+}
+function phoneLink(p){
+  const m = p.match(/([\d][\d\-().\s]{6,}\d)/);
+  if(!m) return esc(p);
+  const tel = m[1].replace(/[^\d]/g,"");
+  return esc(p.replace(m[1],"")) + `<a href="tel:${tel}">${esc(m[1])}</a>`;
+}
+function burdenTable(rows){
+  if(!rows || !rows.length) return `<div class="nodata">No approved employer-burden rates on file.</div>`;
+  let h = `<table class="brt"><thead><tr><th>Model</th>`+
+    BURDEN_COLS.map(c=>`<th>${c[1]}</th>`).join("")+`</tr></thead><tbody>`;
+  rows.forEach(r=>{
+    h += `<tr><td class="m">${esc(r.model)}</td>`+
+      BURDEN_COLS.map(c=>`<td class="${c[0]==="total"?"tot":""}">${fmtPct(r[c[0]])}</td>`).join("")+`</tr>`;
+  });
+  h += `</tbody></table>`;
+  const upd = rows[0].updated ? `<div class="nodata">Rates last updated ${esc(rows[0].updated)}.</div>` : "";
+  return h+upd;
+}
+function card(c){
+  let h = `<div class="card" data-name="${esc(c.name.toLowerCase())}" data-lang="${esc((c.languages||'').toLowerCase())}" data-blob="${esc(((c.emails||[]).join(' ')+' '+(c.phones||[]).join(' ')).toLowerCase())}" data-svc="${esc((c.services||[]).join('|'))}">`;
+  h += `<h3>${esc(c.name)}</h3>`;
+  if(c.subtitle) h += `<div class="sub">${esc(c.subtitle)}</div>`;
+  if(c.services) h += `<div class="badges">${c.services.map(svcBadge).join("")}</div>`;
+  if(c.languages) h += `<div class="field"><span class="lbl">Languages</span><div class="val">${esc(c.languages)}</div></div>`;
+  if(c.phones && c.phones.length) h += `<div class="field"><span class="lbl">Phone</span><div class="val">${c.phones.map(p=>`<div>${phoneLink(p)}</div>`).join("")}</div></div>`;
+  if(c.emails && c.emails.length) h += `<div class="field"><span class="lbl">Email</span><div class="val">${c.emails.map(e=>`<div>${emailLink(e)}</div>`).join("")}</div></div>`;
+  if(c.website) h += `<div class="field"><span class="lbl">Website</span><div class="val"><a href="${esc(c.website)}" target="_blank" rel="noopener">${esc(c.website.replace(/^https?:\/\//,''))}</a></div></div>`;
+  h += `<details class="burden"><summary>Approved employer burden rates</summary>${burdenTable(c.burden)}</details>`;
+  h += `</div>`;
+  return h;
+}
+
+document.getElementById("metaLine").textContent =
+  `${DATA.contacts.length} providers in the contact directory · ${DATA.burden_updated || "employer burden summary"}`;
+
+document.getElementById("grid").innerHTML = DATA.contacts.map(card).join("");
+document.getElementById("gridExtra").innerHTML = DATA.burden_only.map(e=>{
+  let h = `<div class="card" data-name="${esc(e.name.toLowerCase())}" data-lang="" data-blob="" data-svc="${esc(e.rows.map(r=>r.model).join('|'))}">`;
+  h += `<h3>${esc(e.name)}</h3>`;
+  const models = [...new Set(e.rows.map(r=>r.model))];
+  h += `<div class="badges">${models.map(svcBadge).join("")}</div>`;
+  h += `<details class="burden" open><summary>Approved employer burden rates</summary>${burdenTable(e.rows)}</details>`;
+  h += `</div>`;
+  return h;
+}).join("");
+
+// ---- filtering ----
+const q = document.getElementById("q"), svc = document.getElementById("svc"), countEl = document.getElementById("count");
+function applyFilter(){
+  const term = q.value.trim().toLowerCase();
+  const s = svc.value;
+  let shown = 0, total = 0;
+  document.querySelectorAll(".grid .card").forEach(card=>{
+    total++;
+    const hay = card.dataset.name+" "+card.dataset.lang+" "+card.dataset.blob;
+    const okText = !term || hay.includes(term);
+    const okSvc = !s || (card.dataset.svc||"").split("|").includes(s);
+    const show = okText && okSvc;
+    card.style.display = show ? "" : "none";
+    if(show) shown++;
+  });
+  countEl.textContent = `${shown} of ${total} shown`;
+}
+q.addEventListener("input", applyFilter);
+svc.addEventListener("change", applyFilter);
+applyFilter();
+
+// ---- calculator ----
+const cProv = document.getElementById("cProv"), cModel = document.getElementById("cModel"),
+      cWage = document.getElementById("cWage"), cResult = document.getElementById("cResult");
+const calcSources = [
+  ...DATA.contacts.filter(c=>c.burden && c.burden.length).map(c=>({name:c.name, rows:c.burden})),
+  ...DATA.burden_only.map(e=>({name:e.name, rows:e.rows}))
+].sort((a,b)=>a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+
+cProv.innerHTML = calcSources.map((s,i)=>`<option value="${i}">${esc(s.name)}</option>`).join("");
+function fillModels(){
+  const src = calcSources[+cProv.value];
+  cModel.innerHTML = src.rows.map((r,i)=>`<option value="${i}">${esc(r.model)}</option>`).join("");
+  calc();
+}
+function calc(){
+  const src = calcSources[+cProv.value];
+  const r = src.rows[+cModel.value];
+  const wage = parseFloat(cWage.value)||0;
+  let rows = "", hasTBD=false, totalRate=0;
+  BURDEN_COLS.forEach(c=>{
+    if(c[0]==="total") return;
+    const v = r[c[0]];
+    let amt="—";
+    if(typeof v==="number"){ amt = "$"+(v*wage).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); totalRate+=v; }
+    else if(v==="TBD"){ amt="TBD"; hasTBD=true; }
+    rows += `<tr><td>${c[1]}</td><td>${fmtPct(v)}</td><td>${amt}</td></tr>`;
+  });
+  const totalAmt = totalRate*wage;
+  const totalLabel = hasTBD ? `≥ $${totalAmt.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}` :
+                              `$${totalAmt.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}`;
+  cResult.innerHTML =
+    `<div>Estimated annual employer burden on <strong>$${wage.toLocaleString()}</strong> in wages with <strong>${esc(src.name)}</strong> (${esc(r.model)}):</div>`+
+    `<div class="big">${totalLabel}</div>`+
+    `<table><tr><th style="text-align:left">Component</th><th style="text-align:left">Rate</th><th style="text-align:left">Amount</th></tr>${rows}`+
+    `<tr><td><strong>Total burden rate</strong></td><td><strong>${fmtPct(r.total)}</strong></td><td><strong>${totalLabel}</strong></td></tr></table>`+
+    (hasTBD?`<div class="hint">Some components are “TBD”; the total shown is a minimum and will be higher once finalized.</div>`:``);
+}
+cProv.addEventListener("change", fillModels);
+cModel.addEventListener("change", calc);
+cWage.addEventListener("input", calc);
+fillModels();
+</script>
+</body>
+</html>
