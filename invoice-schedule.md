@@ -13,36 +13,38 @@
 - The screenshots show the **bank settlement/deposit date** only. Invoice **submitted** and
   **due** Mondays below are back‑calculated from the Net‑30 terms (payment date − ~30 days,
   snapped to the Monday of that Sun–Sat work week).
-- Only payments referencing **Coastal** or **CGSS** are included, per request.
-- **TBD** = payment references Coastal Grove Support Co. but no invoice number appeared in the
-  bank memo; assign the correct CGSS number when known.
+- **Inclusion rule:** include a payment if it (a) references **Coastal/CGSS**, **or**
+  (b) is **≈ $4,200** even when the memo names a different payee (band used ≈ $3,900–$4,500,
+  matching the recurring invoice amount). Payments far from $4,200 that do not reference
+  Coastal are excluded.
+- **TBD** = the payment qualifies but no CGSS invoice number appeared in the bank memo;
+  the **Memo** column shows what the bank statement carried instead.
 
-## Invoice schedule (all paid Coastal / CGSS payments)
+## Invoice schedule (paid)
 
-| Invoice # | Billing week (Sun–Sat) | Submitted (Mon) | Net‑30 due (Mon) | Payment received | Amount | Account | Status |
-|-----------|------------------------|-----------------|------------------|------------------|-----------|---------|--------|
-| CGSS-1006 | Feb 22 – Feb 28, 2026  | Feb 23, 2026    | Mar 30, 2026     | Mar 30, 2026     | $4,168.45 | …2384   | PAID   |
-| CGSS-1005 | Mar 1 – Mar 7, 2026    | Mar 2, 2026     | Apr 6, 2026      | Apr 2, 2026      | $4,210.56 | …2384   | PAID   |
-| TBD       | Mar 1 – Mar 7, 2026    | Mar 2, 2026     | Apr 6, 2026      | Apr 2, 2026      | $4,210.56 | …2384   | PAID   |
-| TBD       | Mar 22 – Mar 28, 2026  | Mar 23, 2026    | Apr 20, 2026     | Apr 21, 2026     | $8,421.12 | …2384   | PAID   |
-| TBD       | Mar 22 – Mar 28, 2026  | Mar 23, 2026    | Apr 20, 2026     | Apr 24, 2026     | $3,995.02 | …2384   | PAID   |
-| TBD       | Apr 5 – Apr 11, 2026   | Apr 6, 2026     | May 11, 2026     | May 11, 2026     | $4,210.57 | …2384   | PAID   |
-| TBD       | Apr 19 – Apr 25, 2026  | Apr 20, 2026    | May 18, 2026     | May 20, 2026     | $8,421.14 | …2384   | PAID   |
-| TBD       | May 3 – May 9, 2026    | May 4, 2026     | Jun 1, 2026      | Jun 2, 2026      | $4,524.09 | …7560   | PAID   |
-| CGSS1015  | May 10 – May 16, 2026  | May 11, 2026    | Jun 8, 2026      | Jun 10, 2026     | $4,200.77 | …7560   | PAID   |
-| CGSS1014  | May 17 – May 23, 2026  | May 18, 2026    | Jun 15, 2026     | Jun 18, 2026     | $4,200.77 | …7560   | PAID   |
+| Invoice # | Billing week (Sun–Sat) | Submitted (Mon) | Net‑30 due (Mon) | Payment received | Amount | Account | Memo | Basis |
+|-----------|------------------------|-----------------|------------------|------------------|-----------|---------|------|-------|
+| TBD       | Feb 8 – Feb 14, 2026   | Feb 9, 2026     | Mar 16, 2026     | Mar 16, 2026     | $3,925.97 | …2384   | "Invoice no. Emily Harbin Feb" | ≈ $4,200 |
+| TBD       | Feb 22 – Feb 28, 2026  | Feb 23, 2026    | Mar 23, 2026     | Mar 25, 2026     | $4,168.45 | …2384   | "Invoice no. Emily Harbin" | ≈ $4,200 |
+| CGSS-1006 | Feb 22 – Feb 28, 2026  | Feb 23, 2026    | Mar 30, 2026     | Mar 30, 2026     | $4,168.45 | …2384   | Invoice no. CGSS-1006 | Coastal/CGSS |
+| CGSS-1005 | Mar 1 – Mar 7, 2026    | Mar 2, 2026     | Apr 6, 2026      | Apr 2, 2026      | $4,210.56 | …2384   | CGSS-1005 | Coastal/CGSS |
+| TBD       | Mar 1 – Mar 7, 2026    | Mar 2, 2026     | Apr 6, 2026      | Apr 2, 2026      | $4,210.56 | …2384   | DES:Invoices, Coastal Grove Support | Coastal |
+| TBD       | Mar 22 – Mar 28, 2026  | Mar 23, 2026    | Apr 20, 2026     | Apr 21, 2026     | $8,421.12 | …2384   | QuickBooks, Coastal Grove Support | Coastal |
+| TBD       | Mar 22 – Mar 28, 2026  | Mar 23, 2026    | Apr 20, 2026     | Apr 24, 2026     | $3,995.02 | …2384   | QuickBooks, Coastal Grove Support | Coastal |
+| TBD       | Apr 5 – Apr 11, 2026   | Apr 6, 2026     | May 11, 2026     | May 11, 2026     | $4,210.57 | …2384   | QuickBooks, Coastal Grove Support | Coastal |
+| TBD       | Apr 19 – Apr 25, 2026  | Apr 20, 2026    | May 18, 2026     | May 20, 2026     | $4,087.50 | …7560   | QuickBooks, Empowered Futures Inde Co | ≈ $4,200 |
+| TBD       | Apr 19 – Apr 25, 2026  | Apr 20, 2026    | May 18, 2026     | May 20, 2026     | $8,421.14 | …2384   | QuickBooks, Coastal Grove Support | Coastal |
+| TBD       | May 3 – May 9, 2026    | May 4, 2026     | Jun 1, 2026      | Jun 2, 2026      | $4,524.09 | …7560   | Bill Pay via Ramp, Coastal Grove Support | Coastal |
+| CGSS1015  | May 10 – May 16, 2026  | May 11, 2026    | Jun 8, 2026      | Jun 10, 2026     | $4,200.77 | …7560   | CGSS1015 | Coastal/CGSS |
+| CGSS1014  | May 17 – May 23, 2026  | May 18, 2026    | Jun 15, 2026     | Jun 18, 2026     | $4,200.77 | …7560   | CGSS1014 via Ramp | Coastal/CGSS |
 
-**Total paid (all Coastal / CGSS): $50,563.05**
+**Total paid: $62,744.97**
 - Numbered CGSS invoices: $16,780.55
-- Coastal payments pending an invoice number (TBD): $33,782.50
+- Coastal (no invoice # in memo): $33,782.50
+- Added per ≈ $4,200 rule (non‑Coastal memo): $12,181.92
 
-## Excluded (not Coastal / CGSS)
-
-Per request, the following payments were excluded because they do not reference Coastal or CGSS:
+## Excluded (not Coastal/CGSS and not ≈ $4,200)
 
 - Mar 2, 2026 — $7,851.95 — "Invoice no. Emily Harbin" (…2384)
-- Mar 16, 2026 — $3,925.97 — "Invoice no. Emily Harbin Feb" (…2384)
-- Mar 25, 2026 — $4,168.45 — "Invoice no. Emily Harbin" (…2384)
 - Mar 30, 2026 — $556.87 — "Invoice no. Jazzlyn Carrasco-340" (…7560)
-- May 20, 2026 — $4,087.50 — INDN: Empowered Futures Inde Co (…7560)
 - Jun 2, 2026 — $937.50 — Bill Pay, INDN: Empowered Futures Inde Co (…7560)
