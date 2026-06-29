@@ -14,33 +14,27 @@
   **due** Mondays below are back‑calculated from the Net‑30 terms (payment date − ~30 days,
   snapped to the Monday of that Sun–Sat work week).
 - Only payments referencing **Coastal** or **CGSS** are included, per request.
+- **TBD** = payment references Coastal Grove Support Co. but no invoice number appeared in the
+  bank memo; assign the correct CGSS number when known.
 
-## Paid invoices (Coastal / CGSS, with invoice number)
+## Invoice schedule (all paid Coastal / CGSS payments)
 
 | Invoice # | Billing week (Sun–Sat) | Submitted (Mon) | Net‑30 due (Mon) | Payment received | Amount | Account | Status |
 |-----------|------------------------|-----------------|------------------|------------------|-----------|---------|--------|
 | CGSS-1006 | Feb 22 – Feb 28, 2026  | Feb 23, 2026    | Mar 30, 2026     | Mar 30, 2026     | $4,168.45 | …2384   | PAID   |
 | CGSS-1005 | Mar 1 – Mar 7, 2026    | Mar 2, 2026     | Apr 6, 2026      | Apr 2, 2026      | $4,210.56 | …2384   | PAID   |
+| TBD       | Mar 1 – Mar 7, 2026    | Mar 2, 2026     | Apr 6, 2026      | Apr 2, 2026      | $4,210.56 | …2384   | PAID   |
+| TBD       | Mar 22 – Mar 28, 2026  | Mar 23, 2026    | Apr 20, 2026     | Apr 21, 2026     | $8,421.12 | …2384   | PAID   |
+| TBD       | Mar 22 – Mar 28, 2026  | Mar 23, 2026    | Apr 20, 2026     | Apr 24, 2026     | $3,995.02 | …2384   | PAID   |
+| TBD       | Apr 5 – Apr 11, 2026   | Apr 6, 2026     | May 11, 2026     | May 11, 2026     | $4,210.57 | …2384   | PAID   |
+| TBD       | Apr 19 – Apr 25, 2026  | Apr 20, 2026    | May 18, 2026     | May 20, 2026     | $8,421.14 | …2384   | PAID   |
+| TBD       | May 3 – May 9, 2026    | May 4, 2026     | Jun 1, 2026      | Jun 2, 2026      | $4,524.09 | …7560   | PAID   |
 | CGSS1015  | May 10 – May 16, 2026  | May 11, 2026    | Jun 8, 2026      | Jun 10, 2026     | $4,200.77 | …7560   | PAID   |
 | CGSS1014  | May 17 – May 23, 2026  | May 18, 2026    | Jun 15, 2026     | Jun 18, 2026     | $4,200.77 | …7560   | PAID   |
 
-**Total paid (numbered CGSS invoices): $16,780.55**
-
-## Other Coastal payments (no explicit invoice number in the memo)
-
-These reference Coastal Grove Support Co. but the screenshot memo did not carry a CGSS invoice
-number. Listed for reconciliation; assign invoice numbers if known.
-
-| Invoice # | Net‑30 due (Mon) | Payment received | Amount | Account | Memo note |
-|-----------|------------------|------------------|-----------|---------|-----------|
-| (unknown) | —                | Apr 2, 2026      | $4,210.56 | …2384   | DES:Invoices, INDN Coastal Grove Support Co |
-| (unknown) | —                | Apr 21, 2026     | $8,421.12 | …2384   | QuickBooks, INDN Coastal Grove Support Co |
-| (unknown) | —                | Apr 24, 2026     | $3,995.02 | …2384   | QuickBooks, INDN Coastal Grove Support Co |
-| (unknown) | —                | May 11, 2026     | $4,210.57 | …2384   | QuickBooks, INDN Coastal Grove Support Co |
-| (unknown) | —                | May 20, 2026     | $8,421.14 | …2384   | QuickBooks, INDN Coastal Grove Support Co |
-| (unknown) | —                | Jun 2, 2026      | $4,524.09 | …7560   | Bill Pay via Ramp, INDN Coastal Grove Support Co |
-
-**Total other Coastal payments: $33,782.50**
+**Total paid (all Coastal / CGSS): $50,563.05**
+- Numbered CGSS invoices: $16,780.55
+- Coastal payments pending an invoice number (TBD): $33,782.50
 
 ## Excluded (not Coastal / CGSS)
 
