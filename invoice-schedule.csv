@@ -1,14 +1,24 @@
-Invoice #,Billing Week (Sun-Sat),Submitted (Mon),Net-30 Due (Mon),Payment Received,Amount,Account,Memo,Basis
-TBD,Feb 8 - Feb 14 2026,2026-02-09,2026-03-16,2026-03-16,3925.97,…2384,Invoice no. Emily Harbin Feb,~$4200
-TBD,Feb 22 - Feb 28 2026,2026-02-23,2026-03-23,2026-03-25,4168.45,…2384,Invoice no. Emily Harbin,~$4200
-CGSS-1006,Feb 22 - Feb 28 2026,2026-02-23,2026-03-30,2026-03-30,4168.45,…2384,Invoice no. CGSS-1006,Coastal/CGSS
-CGSS-1005,Mar 1 - Mar 7 2026,2026-03-02,2026-04-06,2026-04-02,4210.56,…2384,CGSS-1005,Coastal/CGSS
-TBD,Mar 1 - Mar 7 2026,2026-03-02,2026-04-06,2026-04-02,4210.56,…2384,DES:Invoices Coastal Grove Support,Coastal
-TBD,Mar 22 - Mar 28 2026,2026-03-23,2026-04-20,2026-04-21,8421.12,…2384,QuickBooks Coastal Grove Support,Coastal
-TBD,Mar 22 - Mar 28 2026,2026-03-23,2026-04-20,2026-04-24,3995.02,…2384,QuickBooks Coastal Grove Support,Coastal
-TBD,Apr 5 - Apr 11 2026,2026-04-06,2026-05-11,2026-05-11,4210.57,…2384,QuickBooks Coastal Grove Support,Coastal
-TBD,Apr 19 - Apr 25 2026,2026-04-20,2026-05-18,2026-05-20,4087.50,…7560,QuickBooks Empowered Futures Inde Co,~$4200
-TBD,Apr 19 - Apr 25 2026,2026-04-20,2026-05-18,2026-05-20,8421.14,…2384,QuickBooks Coastal Grove Support,Coastal
-TBD,May 3 - May 9 2026,2026-05-04,2026-06-01,2026-06-02,4524.09,…7560,Bill Pay via Ramp Coastal Grove Support,Coastal
-CGSS1015,May 10 - May 16 2026,2026-05-11,2026-06-08,2026-06-10,4200.77,…7560,CGSS1015,Coastal/CGSS
-CGSS1014,May 17 - May 23 2026,2026-05-18,2026-06-15,2026-06-18,4200.77,…7560,CGSS1014 via Ramp,Coastal/CGSS
+Week,Week (Sun-Sat),Invoice Due to FMS (Mon),Net-30 Due,Invoice / Memo,Amount,Account,Actual Paid,Variance
+1,Feb 1 - Feb 7 2026,2026-02-09,2026-03-11,,,,,
+2,Feb 8 - Feb 14 2026,2026-02-16,2026-03-18,Emily Harbin Feb (~$4200),3925.97,…2384,2026-03-16,2 days early
+3,Feb 15 - Feb 21 2026,2026-02-23,2026-03-25,Emily Harbin (~$4200),4168.45,…2384,2026-03-25,on time
+4,Feb 22 - Feb 28 2026,2026-03-02,2026-04-01,CGSS-1006,4168.45,…2384,2026-03-30,2 days early
+5,Mar 1 - Mar 7 2026,2026-03-09,2026-04-08,CGSS-1005,4210.56,…2384,2026-04-02,6 days early
+5,Mar 1 - Mar 7 2026,2026-03-09,2026-04-08,DES:Invoices Coastal (poss. dup of CGSS-1005),4210.56,…2384,2026-04-02,6 days early
+6,Mar 8 - Mar 14 2026,2026-03-16,2026-04-15,,,,,
+7,Mar 15 - Mar 21 2026,2026-03-23,2026-04-22,Coastal (QuickBooks),8421.12,…2384,2026-04-21,1 day early
+8,Mar 22 - Mar 28 2026,2026-03-30,2026-04-29,Coastal (QuickBooks),3995.02,…2384,2026-04-24,5 days early
+9,Mar 29 - Apr 4 2026,2026-04-06,2026-05-06,,,,,
+10,Apr 5 - Apr 11 2026,2026-04-13,2026-05-13,Coastal (QuickBooks),4210.57,…2384,2026-05-11,2 days early
+11,Apr 12 - Apr 18 2026,2026-04-20,2026-05-20,Coastal (QuickBooks),8421.14,…2384,2026-05-20,on time
+11,Apr 12 - Apr 18 2026,2026-04-20,2026-05-20,Empowered Futures (~$4200),4087.50,…7560,2026-05-20,on time
+12,Apr 19 - Apr 25 2026,2026-04-27,2026-05-27,,,,,
+13,Apr 26 - May 2 2026,2026-05-04,2026-06-03,Coastal (Bill Pay via Ramp),4524.09,…7560,2026-06-02,1 day early
+14,May 3 - May 9 2026,2026-05-11,2026-06-10,CGSS1015,4200.77,…7560,2026-06-10,on time
+15,May 10 - May 16 2026,2026-05-18,2026-06-17,CGSS1014,4200.77,…7560,2026-06-18,1 day late
+16,May 17 - May 23 2026,2026-05-25,2026-06-24,,,,,
+17,May 24 - May 30 2026,2026-06-01,2026-07-01,,,,,
+18,May 31 - Jun 6 2026,2026-06-08,2026-07-08,,,,,
+19,Jun 7 - Jun 13 2026,2026-06-15,2026-07-15,,,,,
+20,Jun 14 - Jun 20 2026,2026-06-22,2026-07-22,,,,,
+21,Jun 21 - Jun 27 2026,2026-06-29,2026-07-29,,,,,
